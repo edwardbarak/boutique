@@ -36,7 +36,6 @@ class customers(pw.Model):
     checkIn = pw.DateTimeField()
     checkOut = pw.DateTimeField()
     paymentMethod = pw.TextField()
-    eventID = pw.IntegerField()
 
     class Meta:
         database = db
@@ -44,7 +43,6 @@ class customers(pw.Model):
 class events(pw.Model):
     primaryCustomer = pw.IntegerField()
     eventName = pw.TextField()
-    eventType = pw.TextField()
     eventStart = pw.DateTimeField()
     eventEnd = pw.DateTimeField()
     participantCount = pw.IntegerField()
@@ -64,7 +62,7 @@ def generate_data(n=10):
     d = 1.0 # percentage of list price discout will reduce to
 
     for room in roomTypes:
-        rooms.create(type=room,
+        rooms.create(roomType=room,
             price=p,
             discount=d,
             roomPhoto='./images/{}.jpg'.format(room)
@@ -88,7 +86,7 @@ def generate_data(n=10):
             'lastName': choice(lastNames),
             'customerType': 'primary',
             'roomType': choice(roomTypes),
-            'roomNum': roomNums.pop(randint(0,len(roomNums))),
+            'roomNum': roomNums.pop(randint(0,len(roomNums) - 1)),
             'checkIn': datetime.datetime(today.year, today.month, today.day, 8) + datetime.timedelta(days=randint(0,7)),
             'paymentMethod': choice(paymentTypes),
             }
@@ -116,9 +114,9 @@ def generate_data(n=10):
     specialRoomReqTypes = [
         'Quiet', 
         'Spacious', 
-        None
+        'None.'
         ]
-    notes = [None, 'Customer is very particular.', 'Event could be loud.']
+    notes = ['None.', 'Customer is very particular.', 'Event could be loud.']
 
     customersTable = list(customers.select().dicts())
     
@@ -126,7 +124,7 @@ def generate_data(n=10):
         selectedCustomer = customersTable.pop(randint(0,len(customersTable)))
         events.create(
             primaryCustomer = selectedCustomer['id'],
-            eventName = eventNames.pop(randint(0,len(eventNames))),
+            eventName = eventNames.pop(randint(0, len(eventNames) - 1)),
             eventStart = selectedCustomer['checkIn'],
             eventEnd = selectedCustomer['checkOut'],
             participantCount = randint(3,100),
@@ -145,15 +143,15 @@ if __name__ == "__main__":
     
     print(notice)
     
-    if input('Create table schemas? (y/n)').lower() == 'y':
+    if input('Create table schemas? (y/n): ').lower() == 'y':
         # Create table schemas
         tables = [rooms, customers, events]
         db.drop_tables(tables)
         print('Dropping table(s) if already in existence.')
         db.create_tables(tables)
-        print('Created table(s).')
+        print('Created table(s).\n')
         
-    if input('Create & load data into tables? (y/n)').lower() == 'y':
+    if input('Create & load data into tables? (y/n): ').lower() == 'y':
         # generate & load data
         generate_data()
             
