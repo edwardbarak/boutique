@@ -3,6 +3,7 @@
 import peewee as pw
 from playhouse.dataset import DataSet
 from playhouse.db_url import connect
+from random import randint
 
 # Variables
 database='boutique'
@@ -21,8 +22,7 @@ class BaseModel(pw.Model):
 class rooms(pw.Model):
     roomType = pw.TextField()
     price = pw.FloatField()
-    roomNum = pw.IntegerField()
-    discount = pw.TextField()
+    discount = pw.FloatField()
     roomPhoto = pw.TextField()
     
     class Meta:
@@ -61,6 +61,67 @@ def create_tables(db, tables):
     db.create_tables(tables)
     print('Created tables {}').format(tables)
 
+def generate_data(n=10):
+    # rooms
+    roomTypes = ['single', 'double', 'queen', 'king']
+    rooms.create(type='single', 
+        price=200, 
+        discount=1,
+        roomPhoto='./images/single.jpg'
+        )
+    rooms.create(type='double', 
+        price=300, 
+        discount=.95,
+        roomPhoto='./images/double.jpg'
+        )
+    rooms.create(type='queen', 
+        price=400, 
+        discount=.9,
+        roomPhoto='./images/queen.jpg'
+        )
+    rooms.create(type='king', 
+        price=500, 
+        discount=.85,
+        roomPhoto='./images/king.jpg'
+        )
+
+    # customers
+    firstNames = ['John', 'Jane', 'Jim', 'Kelly']
+    lastNames = ['Doe', 'Brown', 'White', 'Black']
+    roomNums = list(range(100, 100+n))
+    for i in range(n):
+        newCustomer = {
+            'firstName': firstNames[randint(0,len(firstNames))],
+            'lastName': lastNames[randint(0,len(firstNames))],
+            'customerType': 'primary',
+            'roomType': roomTypes[randint(0,len(roomTypes))],
+            'roomNum': roomNums.pop(randint(0,len(roomNums)))
+        }
+        
+
+    """
+    STOCK.create(ticker='DWDP', exchange='NYSE')
+
+    customers.firstName = pw.TextField()
+    customers.lastName = pw.TextField()
+    customers.customerType = pw.TextField()
+    customers.roomNum = pw.IntegerField()
+    customers.checkIn = pw.DateTimeField()
+    customers.checkOut = pw.DateTimeField()
+    customers.paymentMethod = pw.TextField()
+    customers.eventID = pw.IntegerField()
+
+    events.primaryCustomer = pw.IntegerField()
+    events.eventName = pw.TextField()
+    events.eventType = pw.TextField()
+    events.eventStart = pw.DateTimeField()
+    events.eventEnd = pw.DateTimeField()
+    events.participantCount = pw.IntegerField()
+    events.specialRoomReqs = pw.TextField()
+    events.paymentMethod = pw.TextField()
+    events.notes = pw.TextField()
+    """
+
 # Main
 if __name__ == "__main__":
     notice = """'Current default settings:
@@ -77,6 +138,9 @@ if __name__ == "__main__":
         create_tables(db, [rooms, customers, events])
         
     if input('Load data into tables? (y/n)').lower() == 'y':
-        # Load data into tables
+        # generate data
+        
+        # load data into tables
+        pass
             
     db.close()
