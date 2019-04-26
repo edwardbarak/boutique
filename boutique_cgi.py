@@ -13,11 +13,20 @@ with open('boutique_cgi.html', 'r') as f:
     f.close()
 
 form = cgi.FieldStorage()
-sql = form.getvalue('fname')
+tableSelect = form.getvalue('table')
 
 db = pw.MySQLDatabase(host='localhost', user='null', database='boutique')
 cursor = db.cursor()
-cursor.execute(sql)
+
+if tableSelect == 'rooms':
+    pass
+elif tableSelect == 'customers':
+    pass
+elif tableSelect == 'events':
+    pass
+elif tableSelect == 'search':
+    pass
+    # cursor.execute(sql)
 
 # Fetch all the rows using fetchall() method.
 _data = cursor.fetchall()

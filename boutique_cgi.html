@@ -3,14 +3,262 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <html>
-    <body style="margin:4; padding:4;">
-        <!-- Textfield with Floating Label -->
-        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="fname" name="fname">
-                <label class="mdl-textfield__label" for="fname">MySQL Query</label>            
+    <body>
+        <!-- Simple header with fixed tabs. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+            <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Boutique DB</span>
             </div>
-            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
-        </form>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Add Room</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Add Customer</a>
+                <a href="#fixed-tab-3" class="mdl-layout__tab">Add Event</a>
+                <a href="#fixed-tab-4" class="mdl-layout__tab">Search by Last Name</a>
+            </div>
+            </header>
+            
+            <main class="mdl-layout__content">
+                <!-- Add Room -->
+                <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">                    
+                    <div class="page-content" style="margin:4; padding:4;">
+                        <!-- Form with Textfields with Floating Labels -->
+                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                            
+                            <!-- roomType, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="roomType" name="roomType">
+                                <label class="mdl-textfield__label" for="roomType">Room Type</label>                                            
+                            </div>
+                            <br>
+                            
+                            <!-- price, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="price" name="price" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="price">Price</label>                                            
+                            </div>
+                            <br>
+                            
+                            <!-- discount, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="discount" name="discount" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="discount">Discount</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- roomPhoto, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="roomPhoto" name="roomPhoto">
+                                <label class="mdl-textfield__label" for="roomPhoto">Path for Photo of Room</label>                                            
+                            </div>
+                            <br>
+
+                            <input id="table" name="table" value="rooms" style="opacity: 0">
+                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
+                        </form>
+                    </div>
+                </section>
+                
+                <!-- Add Customer -->
+                <section class="mdl-layout__tab-panel" id="fixed-tab-2">                    
+                    <div class="page-content" style="margin:4; padding:4;">
+                        <!-- Form with Textfields with Floating Labels -->
+                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                            
+                            <!-- firstName, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="firstName" name="firstName">
+                                <label class="mdl-textfield__label" for="firstName">First Name</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- lastName, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="lastName" name="lastName">
+                                <label class="mdl-textfield__label" for="lastName">Last Name</label>                                            
+                            </div>
+                            <br>                            
+
+                            <!-- customerType, radio -->         
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                <input type="radio" id="option-1" class="mdl-radio__button" name="customerType" value="primary" checked>
+                                <span class="mdl-radio__label">Primary</span>
+                            </label>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                                <input type="radio" id="option-2" class="mdl-radio__button" name="customerType" value="dependent">
+                                <span class="mdl-radio__label">Dependent</span>
+                            </label>
+                            <br>
+
+                            <!-- roomNum, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="roomNum" name="roomNum" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="roomNum">Room Number</label>                                            
+                            </div>
+                            <br>
+                             
+                            <!-- checkIn, datetime -->
+                            <!-- checkInYear, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkInYear" name="checkInYear" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkInYear">Check In Year</label>                                            
+                            </div>                            
+
+                            <!-- checkInMonth, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkInMonth" name="checkInMonth" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkInMonth">Check In Month</label>                                            
+                            </div>                            
+
+                            <!-- checkInDay, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkInDay" name="checkInDay" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkInDay">Check In Day</label>                                            
+                            </div>                            
+
+                            <!-- checkInHour, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkInHour" name="checkInHour" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkInHour">Check In Hour</label>                                            
+                            </div>
+                            
+                            <!-- checkInMinute, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkInMinute" name="checkInMinute" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkInMinute">Check In Minute</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- checkOut, datetime -->
+                            <!-- checkOutYear, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkOutYear" name="checkOutYear" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkOutYear">Check Out Year</label>                                            
+                            </div>                            
+
+                            <!-- checkOutMonth, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkOutMonth" name="checkOutMonth" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkOutMonth">Check Out Month</label>                                            
+                            </div>                            
+
+                            <!-- checkOutDay, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkOutDay" name="checkOutDay" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkOutDay">Check Out Day</label>                                            
+                            </div>                            
+
+                            <!-- checkOutHour, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkOutHour" name="checkOutHour" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkOutHour">Check Out Hour</label>                                            
+                            </div>
+                            
+                            <!-- checkOutMinute, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="checkOutMinute" name="checkOutMinute" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="checkOutMinute">Check Out Minute</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- paymentMethod, radio -->         
+                            <!-- debit card -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                <input type="radio" id="option-1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
+                                <span class="mdl-radio__label">Debit Card</span>
+                            </label>
+                            <!-- credit card -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                                <input type="radio" id="option-2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
+                                <span class="mdl-radio__label">Credit Card</span>
+                            </label>
+                            <!-- cash -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                                <input type="radio" id="option-3" class="mdl-radio__button" name="paymentMethod" value="Cash">
+                                <span class="mdl-radio__label">Cash</span>
+                            </label>                    
+                            <!-- paypal -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+                                <input type="radio" id="option-4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
+                                <span class="mdl-radio__label">Paypal</span>
+                            </label>
+                            <br>
+
+                            <input id="table" name="table" value="customers" style="opacity: 0">
+                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
+                        </form>
+                    </div>
+                </section>
+                
+                <!-- TODO -->
+                <!-- Add Event -->
+                <section class="mdl-layout__tab-panel" id="fixed-tab-3">                    
+                    <div class="page-content" style="margin:4; padding:4;">
+                            <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                                <!-- primaryCustomer, number -->
+                        
+                                <!-- eventName, text -->
+                        
+                                <!-- eventStart, datetime -->
+                                
+                                <!-- eventEnd, datetime -->
+                                
+                                <!-- participantCount, number -->
+                                
+                                <!-- specialRoomReqs, text -->
+                                
+                                <!-- paymentMethod, radio -->         
+                                <!-- debit card -->
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                    <input type="radio" id="option-1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
+                                    <span class="mdl-radio__label">Debit Card</span>
+                                </label>
+                                <!-- credit card -->
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                                    <input type="radio" id="option-2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
+                                    <span class="mdl-radio__label">Credit Card</span>
+                                </label>
+                                <!-- cash -->
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
+                                    <input type="radio" id="option-3" class="mdl-radio__button" name="paymentMethod" value="Cash">
+                                    <span class="mdl-radio__label">Cash</span>
+                                </label>                    
+                                <!-- paypal -->
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
+                                    <input type="radio" id="option-4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
+                                    <span class="mdl-radio__label">Paypal</span>
+                                </label>
+                                <br>
+                                
+                                <!-- notes, text -->
+    
+                                <input id="table" name="table" value="events" style="opacity: 0">
+                                <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
+                            </form>
+                        
+                    </div>
+                </section>
+                
+                <!-- Search by Last Name -->
+                <section class="mdl-layout__tab-panel" id="fixed-tab-4">                    
+                    <div class="page-content" style="margin:4; padding:4;">
+                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                        
+                            <!-- lastName, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="lastName" name="lastName">
+                                <label class="mdl-textfield__label" for="lastName">Last Name</label>                                            
+                            </div>
+                            <br>
+
+                            <input id="table" name="table" value="search" style="opacity: 0">
+                            <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
     </body>
 </html>
