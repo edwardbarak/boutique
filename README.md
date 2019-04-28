@@ -30,21 +30,21 @@ BDM: Business Data Management
   - ~~events~~
 - Script to implement CGI
   - Implement for rooms
-    - Pull form data
-    - Create entry
+    - ~~Pull form data~~
+    - ~~Create entry~~
     - Confirm successful entry via snackbar
   - Implement for customers
-    - Pull form data
-    - Create entry
+    - ~~Pull form data~~
+    - ~~Create entry~~
     - Confirm successful entry via snackbar
    - Implement for events
-      - Pull form data
-      - Create entry
+      - ~~Pull form data~~
+      - ~~Create entry~~
       - Confirm successful entry via snackbar
    - Implement for search
-      - Pull form data
-      - Execute query
-      - Confirm successful entry via snackbar
+      - ~~Pull form data~~
+      - ~~Execute query~~
+      - Display query resuslts
 - ~~HTML~~
    - ~~Material Design~~
    - ~~Framework Functionality~~

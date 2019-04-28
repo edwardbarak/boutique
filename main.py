@@ -102,7 +102,7 @@ def generate_data(n=10):
             checkIn=newCustomer['checkIn'],
             checkOut=newCustomer['checkOut'],
             paymentMethod=newCustomer['paymentMethod'],
-            )
+        )
 
     # events
     eventNames = [
@@ -123,14 +123,14 @@ def generate_data(n=10):
     for i in range(len(eventNames) - randint(1, len(eventNames) - 1)):
         selectedCustomer = customersTable.pop(randint(0,len(customersTable)))
         events.create(
-            primaryCustomer = selectedCustomer['id'],
-            eventName = eventNames.pop(randint(0, len(eventNames) - 1)),
-            eventStart = selectedCustomer['checkIn'],
-            eventEnd = selectedCustomer['checkOut'],
-            participantCount = randint(3,100),
-            specialRoomReqs = choice(specialRoomReqTypes),
-            paymentMethod = choice(paymentTypes),
-            notes = choice(notes),
+            primaryCustomer=selectedCustomer['id'],
+            eventName=eventNames.pop(randint(0, len(eventNames) - 1)),
+            eventStart=selectedCustomer['checkIn'],
+            eventEnd=selectedCustomer['checkOut'],
+            participantCount=randint(3,100),
+            specialRoomReqs=choice(specialRoomReqTypes),
+            paymentMethod=choice(paymentTypes),
+            notes=choice(notes),
         )
 
 # Main
