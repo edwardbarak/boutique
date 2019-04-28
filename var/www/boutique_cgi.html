@@ -192,22 +192,101 @@
                     </div>
                 </section>
                 
-                <!-- TODO -->
                 <!-- Add Event -->
                 <section class="mdl-layout__tab-panel" id="fixed-tab-3">                    
                     <div class="page-content" style="margin:4; padding:4;">
                             <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
                                 <!-- primaryCustomer, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="primaryCustomer" name="primaryCustomer" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="primaryCustomer">Primary Customer ID</label>                                            
+                                </div>
+                                <br>
                         
                                 <!-- eventName, text -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventName" name="eventName">
+                                    <label class="mdl-textfield__label" for="eventName">Event Name</label>                                            
+                                </div>
+                                <br>
                         
                                 <!-- eventStart, datetime -->
+                                <!-- eventStartYear, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventStartYear" name="eventStartYear" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventStartYear">Event Start Year</label>                                            
+                                </div>                            
+
+                                <!-- eventStartMonth, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventStartMonth" name="eventStartMonth" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventStartMonth">Event Start Month</label>                                            
+                                </div>                            
+
+                                <!-- eventStartDay, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventStartDay" name="eventStartDay" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventStartDay">Event Start Day</label>                                            
+                                </div>                            
+
+                                <!-- eventStartHour, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventStartHour" name="eventStartHour" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventStartHour">Event Start Hour</label>                                            
+                                </div>
                                 
+                                <!-- eventStartMinute, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventStartMinute" name="eventStartMinute" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventStartMinute">Event Start Minute</label>                                            
+                                </div>
+                                <br>
+
                                 <!-- eventEnd, datetime -->
+                                <!-- eventEndYear, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventEndYear" name="eventEndYear" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventEndYear">Event End Year</label>                                            
+                                </div>                            
+
+                                <!-- eventEndMonth, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventEndMonth" name="eventEndMonth" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventEndMonth">Event End Month</label>                                            
+                                </div>                            
+
+                                <!-- eventEndDay, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventEndDay" name="eventEndDay" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventEndDay">Event End Day</label>                                            
+                                </div>                            
+
+                                <!-- eventEndHour, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventEndHour" name="eventEndHour" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventEndHour">Event End Hour</label>                                            
+                                </div>
+                                
+                                <!-- eventEndMinute, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventEndMinute" name="eventEndMinute" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="eventEndMinute">Event End Minute</label>                                            
+                                </div>
+                                <br>
                                 
                                 <!-- participantCount, number -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="participantCount" name="participantCount" pattern="-?[0-9]*(\.[0-9]+)?">
+                                    <label class="mdl-textfield__label" for="participantCount">Participant Count</label>                                            
+                                </div>
+                                <br>
                                 
                                 <!-- specialRoomReqs, text -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="specialRoomReqs" name="specialRoomReqs">
+                                    <label class="mdl-textfield__label" for="specialRoomReqs">Special Room Requirements</label>                                            
+                                </div>
+                                <br>
                                 
                                 <!-- paymentMethod, radio -->         
                                 <!-- debit card -->
@@ -233,6 +312,12 @@
                                 <br>
                                 
                                 <!-- notes, text -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="notes" name="notes">
+                                    <label class="mdl-textfield__label" for="notes">Notes</label>                                            
+                                </div>
+                                <br>
+                                
     
                                 <input id="table" name="table" value="events" style="opacity: 0">
                                 <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">

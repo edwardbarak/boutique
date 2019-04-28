@@ -45,11 +45,11 @@ BDM: Business Data Management
       - Pull form data
       - Execute query
       - Confirm successful entry via snackbar
-- HTML
+- ~~HTML~~
    - ~~Material Design~~
    - ~~Framework Functionality~~
-   - Skeletons
+   - ~~Skeletons~~
       - ~~rooms~~
       - ~~customers~~
-      - events
+      - ~~events~~
       - ~~search~~
