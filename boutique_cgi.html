@@ -10,6 +10,7 @@
             <div class="mdl-layout__header-row">
                 <!-- Title -->
                 <span class="mdl-layout-title">Boutique DB</span>
+                <!-- confirmation -->
             </div>
             <!-- Tabs -->
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
@@ -25,7 +26,7 @@
                 <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">                    
                     <div class="page-content" style="margin:4; padding:4;">
                         <!-- Form with Textfields with Floating Labels -->
-                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                        <form name="pyform" method="POST" action="http://localhost/boutique/boutique_cgi.py">
                             
                             <!-- roomType, text -->
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -65,7 +66,7 @@
                 <section class="mdl-layout__tab-panel" id="fixed-tab-2">                    
                     <div class="page-content" style="margin:4; padding:4;">
                         <!-- Form with Textfields with Floating Labels -->
-                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                        <form name="pyform" method="POST" action="http://localhost/boutique/boutique_cgi.py">
                             
                             <!-- firstName, text -->
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -82,12 +83,12 @@
                             <br>                            
 
                             <!-- customerType, radio -->         
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                                <input type="radio" id="option-1" class="mdl-radio__button" name="customerType" value="primary" checked>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customerType-1">
+                                <input type="radio" id="customerType-1" class="mdl-radio__button" name="customerType" value="primary" checked>
                                 <span class="mdl-radio__label">Primary</span>
                             </label>
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                                <input type="radio" id="option-2" class="mdl-radio__button" name="customerType" value="dependent">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customerType-2">
+                                <input type="radio" id="customerType-2" class="mdl-radio__button" name="customerType" value="dependent">
                                 <span class="mdl-radio__label">Dependent</span>
                             </label>
                             <br>
@@ -165,23 +166,23 @@
 
                             <!-- paymentMethod, radio -->         
                             <!-- debit card -->
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                                <input type="radio" id="option-1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_paymentMethod1">
+                                <input type="radio" id="customer_paymentMethod1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
                                 <span class="mdl-radio__label">Debit Card</span>
                             </label>
                             <!-- credit card -->
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                                <input type="radio" id="option-2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_paymentMethod2">
+                                <input type="radio" id="customer_paymentMethod2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
                                 <span class="mdl-radio__label">Credit Card</span>
                             </label>
                             <!-- cash -->
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                                <input type="radio" id="option-3" class="mdl-radio__button" name="paymentMethod" value="Cash">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_paymentMethod3">
+                                <input type="radio" id="customer_paymentMethod3" class="mdl-radio__button" name="paymentMethod" value="Cash">
                                 <span class="mdl-radio__label">Cash</span>
                             </label>                    
                             <!-- paypal -->
-                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
-                                <input type="radio" id="option-4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_paymentMethod4">
+                                <input type="radio" id="customer_paymentMethod4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
                                 <span class="mdl-radio__label">Paypal</span>
                             </label>
                             <br>
@@ -195,7 +196,7 @@
                 <!-- Add Event -->
                 <section class="mdl-layout__tab-panel" id="fixed-tab-3">                    
                     <div class="page-content" style="margin:4; padding:4;">
-                            <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                            <form name="pyform" method="POST" action="http://localhost/boutique/boutique_cgi.py">
                                 <!-- primaryCustomer, number -->
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" type="text" id="primaryCustomer" name="primaryCustomer" pattern="-?[0-9]*(\.[0-9]+)?">
@@ -290,23 +291,23 @@
                                 
                                 <!-- paymentMethod, radio -->         
                                 <!-- debit card -->
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-                                    <input type="radio" id="option-1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="event_paymentMethod1">
+                                    <input type="radio" id="event_paymentMethod1" class="mdl-radio__button" name="paymentMethod" value="Debit Card" checked>
                                     <span class="mdl-radio__label">Debit Card</span>
                                 </label>
                                 <!-- credit card -->
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-                                    <input type="radio" id="option-2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="event_paymentMethod2">
+                                    <input type="radio" id="event_paymentMethod2" class="mdl-radio__button" name="paymentMethod" value="Credit Card">
                                     <span class="mdl-radio__label">Credit Card</span>
                                 </label>
                                 <!-- cash -->
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-3">
-                                    <input type="radio" id="option-3" class="mdl-radio__button" name="paymentMethod" value="Cash">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="event_paymentMethod3">
+                                    <input type="radio" id="event_paymentMethod3" class="mdl-radio__button" name="paymentMethod" value="Cash">
                                     <span class="mdl-radio__label">Cash</span>
                                 </label>                    
                                 <!-- paypal -->
-                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-4">
-                                    <input type="radio" id="option-4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
+                                <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="event_paymentMethod4">
+                                    <input type="radio" id="event_paymentMethod4" class="mdl-radio__button" name="paymentMethod" value="Paypal">
                                     <span class="mdl-radio__label">Paypal</span>
                                 </label>
                                 <br>
@@ -329,7 +330,7 @@
                 <!-- Search by Last Name -->
                 <section class="mdl-layout__tab-panel" id="fixed-tab-4">                    
                     <div class="page-content" style="margin:4; padding:4;">
-                        <form name="pyform" method="POST" action="http://localhost/boutique_cgi.py">
+                        <form name="pyform" method="POST" action="http://localhost/boutique/boutique_cgi.py">
                         
                             <!-- lastName, text -->
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -341,6 +342,7 @@
                             <input id="table" name="table" value="search" style="opacity: 0">
                             <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
                         </form>
+                        <!-- query resuslts -->
                     </div>
                 </section>
             </main>
