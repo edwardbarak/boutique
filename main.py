@@ -32,10 +32,17 @@ class customers(pw.Model):
     firstName = pw.TextField()
     lastName = pw.TextField()
     customerType = pw.TextField()   # primary or dependent
+    age = pw.IntegerField()
+    idType = pw.TextField()
     roomNum = pw.IntegerField()
+    roomType = pw.IntegerField()
+    floorNum = pw.IntegerField()
+    event = pw.IntegerField()
+    eventPrimaryCustomer = pw.BooleanField()
     checkIn = pw.DateTimeField()
     checkOut = pw.DateTimeField()
     paymentMethod = pw.TextField()
+    discountApplied = pw.BooleanField()
 
     class Meta:
         database = db
@@ -43,6 +50,7 @@ class customers(pw.Model):
 class events(pw.Model):
     primaryCustomer = pw.IntegerField()
     eventName = pw.TextField()
+    eventType = pw.TextField()
     eventStart = pw.DateTimeField()
     eventEnd = pw.DateTimeField()
     participantCount = pw.IntegerField()
