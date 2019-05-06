@@ -43,7 +43,6 @@ class customers(pw.Model):
     checkOut = pw.DateTimeField()
     paymentMethod = pw.TextField()
     discountApplied = pw.BooleanField()
-
     class Meta:
         database = db
 
@@ -141,6 +140,140 @@ def generate_data(n=10):
             notes=choice(notes),
         )
 
+def generate_data_v2(n=10, e=3, p=6):
+    if e > 4:
+        raise Exception('e can\'t be greater than 4')
+    
+    # shared vars
+    paymentTypes = ['Debit Card', 'Credit Card', 'Cash', 'Paypal']
+    idTypes = ['Drivers License', 'Passport']
+    
+    # rooms vars
+    roomTypes = ['single', 'double', 'queen', 'king', 'event']
+    price = 200 # initial price
+    discount = 1.0 # percentage of list price discout will reduce to
+
+    # customers vars
+    import datetime
+    today = datetime.datetime.now()
+    roomNums = list(range(100,199))
+    firstNames = ['John', 'Jane', 'Jim', 'Kelly', 'Megan', 'Chris']
+    lastNames = ['Doe', 'Brown', 'White', 'Black', 'Price', 'Baker']
+
+    # events vars
+    eventNames = [
+        'Tinfoil Hat Convention', 
+        'Dungeon and Dragons Competition',
+        'Canadian Maple Syrup Consortium', 
+        'Make America America Again!',
+        ]
+    specialRoomReqTypes = [
+        'Quiet', 
+        'Spacious', 
+        'None.'
+        ]
+    eventTypes = [
+        'Conference',
+        'Party',
+    ]
+    notes = ['None.', 'Customer is very particular.', 'Event could be loud.']
+    
+    def newCustomer(roomNums, customerType='Primary', eventID=0, eventPrimaryCustomer='None', eventCheckIn='None'):    
+        newCustomer = {
+            'firstName': choice(firstNames),
+            'lastName': choice(lastNames),
+            'customerType': customerType,
+            'age': randint(18,70),
+            'idType': choice(idTypes),            
+            'roomNum': roomNums.pop(randint(0,len(roomNums) - 1)),
+            'roomType': choice(roomTypes),
+            'floorNum': 1,            
+            'paymentMethod': choice(paymentTypes),
+            'discountApplied': choice([True, False]),
+            'eventID': eventID,
+            'eventPrimaryCustomer': eventPrimaryCustomer,
+            }
+
+        if eventID != 0:
+            newCustomer['checkIn'] = eventCheckIn
+        else:
+            newCustomer['checkIn'] = datetime.datetime(today.year, today.month, today.day, 8) + datetime.timedelta(days=randint(0,7))
+        
+        newCustomer['checkOut'] = newCustomer['checkIn'] + datetime.timedelta(days=randint(0,4), hours=9)
+
+        return roomNums, newCustomer
+
+    def newEvent(eventNames, roomNums, i):
+        event = {
+            'event': eventNames.pop(randint(0,len(eventNames))),
+            'eventID': i,
+            'roomNum': roomNums.pop(randint(0,len(roomNums) - 1)),      
+            'checkIn': datetime.datetime(today.year, today.month, today.day, 8) + datetime.timedelta(days=randint(0,7)),
+            'eventType': choice(eventTypes),
+        }
+        
+        return eventNames, roomNums, event
+
+    
+    # rooms generation
+    for room in roomTypes:
+        rooms.create(roomType=room,
+            price=price,
+            discount=discount,
+            roomPhoto='./images/{}.jpg'.format(room)
+        )
+        price += 100
+        discount -= 0.05
+    
+    # customers generation            
+    ## by event
+    for i in range(e):
+        # event generation
+        eventNames, roomNums, event = newEvent(eventNames, roomNums, i + 1)
+        events.create(
+            primaryCustomer= i * p + 1,
+            eventName=event['event'],
+            eventType=event['eventType'],
+            eventStart=event['checkIn'],
+            eventEnd=event['checkIn'] + datetime.timedelta(days=randint(0,4), hours=9),
+            participantCount=p,
+            specialRoomReqs=choice(specialRoomReqTypes),
+            paymentMethod=choice(paymentTypes),
+            notes=choice(notes),
+        )
+
+        # event primary customer generation
+        roomNums, customer = newCustomer(roomNums, eventID=event['eventID'], eventPrimaryCustomer='Primary', eventCheckIn=event['checkIn'])
+        eventCustomers = [customer]
+
+        # event dependent customer generation
+        for j in range(p - 1):
+            roomNums, cust = newCustomer(roomNums, eventID=event['eventID'], eventPrimaryCustomer='Dependent', eventCheckIn=event['checkIn'])
+            eventCustomers.append(cust)
+
+        for eventCustomer in eventCustomers:
+            customers.create(
+                firstName=eventCustomer['firstName'],
+                lastName=eventCustomer['lastName'],
+                customerType=eventCustomer['customerType'],
+                age=eventCustomer['age'],
+                idType=eventCustomer['idType'],
+                roomType=eventCustomer['roomType'],
+                roomNum=eventCustomer['roomNum'],
+                floorNum=eventCustomer['floorNum'],
+                event=eventCustomer['eventID'],
+                eventPrimaryCustomer=eventCustomer['eventPrimaryCustomer'],
+                checkIn=eventCustomer['checkIn'],
+                checkOut=eventCustomer['checkOut'],
+                paymentMethod=eventCustomer['paymentMethod'],
+                discountApplied=eventCustomer['discountApplied']
+            )
+
+
+
+
+
+
 # Main
 if __name__ == "__main__":
     notice = """'Current default settings:
@@ -162,5 +295,6 @@ if __name__ == "__main__":
     if input('Create & load data into tables? (y/n): ').lower() == 'y':
         # generate & load data
         generate_data()
+        # generate_data_v2()
             
     db.close()

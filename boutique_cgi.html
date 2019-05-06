@@ -187,6 +187,70 @@
                             </label>
                             <br>
 
+                            <!-- age, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="age" name="age" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="age">Age</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- floorNum, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="floorNum" name="floorNum" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="floorNum">Floor Number</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- discountApplied, radio -->         
+                            <!-- True -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_discountApplied1">
+                                <input type="radio" id="customer_discountApplied1" class="mdl-radio__button" name="discountApplied" value="Debit Card" checked>
+                                <span class="mdl-radio__label">Discount Applied: True</span>
+                            </label>
+                            <!-- False -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_discountApplied2">
+                                <input type="radio" id="customer_discountApplied2" class="mdl-radio__button" name="discountApplied" value="Credit Card">
+                                <span class="mdl-radio__label">Discount Applied: False</span>
+                            </label>
+                            <br>
+
+                            <!-- roomType, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="roomType" name="roomType" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="roomType">Room Type ID</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- idType, text -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="idType" name="idType">
+                                <label class="mdl-textfield__label" for="idType">ID Type</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- eventID, number -->
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="eventID" name="eventID" pattern="-?[0-9]*(\.[0-9]+)?">
+                                <label class="mdl-textfield__label" for="eventID">Event ID</label>                                            
+                            </div>
+                            <br>
+
+                            <!-- eventPrimaryCustomer, radio -->         
+                            <!-- True -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_eventPrimaryCustomer1">
+                                <input type="radio" id="customer_eventPrimaryCustomer1" class="mdl-radio__button" name="eventPrimaryCustomer" value="Debit Card" checked>
+                                <span class="mdl-radio__label">Event Primary Customer: True</span>
+                            </label>
+                            <!-- False -->
+                            <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="customer_eventPrimaryCustomer2">
+                                <input type="radio" id="customer_eventPrimaryCustomer2" class="mdl-radio__button" name="eventPrimaryCustomer" value="Credit Card">
+                                <span class="mdl-radio__label">Event Primary Customer: False</span>
+                            </label>
+                            <br>
+
+
+
+
                             <input id="table" name="table" value="customers" style="opacity: 0">
                             <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Submit" type="submit">
                         </form>
@@ -316,6 +380,13 @@
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" type="text" id="notes" name="notes">
                                     <label class="mdl-textfield__label" for="notes">Notes</label>                                            
+                                </div>
+                                <br>
+
+                                <!-- eventType, text -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="eventType" name="eventType">
+                                    <label class="mdl-textfield__label" for="eventType">Event Type</label>                                            
                                 </div>
                                 <br>
                                 
