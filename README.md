@@ -2,6 +2,11 @@
 
 BDM: Business Data Management
 
+## IMPORTANT NOTES
+- **Table creation** is done in main.py
+- **Data generation** is done in main.py
+- **Apache** files contain '_cgi' in their filenames.
+
 ## Objectives
 
 - Implement a MySQL database for a boutique hotel.
